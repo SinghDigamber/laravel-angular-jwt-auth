@@ -15,8 +15,8 @@
 * Enter inside the Anuglar folder. 
 `cd frontend`
 
-* Install the required packages for Laravel.
+* Install the required packages for Angular.
 `npm install`
 
 * Start the angular auth app. 
-`php artisan serve`
+`ng serve`
