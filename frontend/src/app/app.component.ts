@@ -6,22 +6,21 @@ import { AuthStateService } from './shared/auth-state.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
 export class AppComponent implements OnInit {
-  isSignedIn: boolean;
+  isSignedIn!: boolean;
 
   constructor(
     private auth: AuthStateService,
     public router: Router,
-    public token: TokenService,
-  ) {
-  }
+    public token: TokenService
+  ) {}
 
   ngOnInit() {
-    this.auth.userAuthState.subscribe(val => {
-        this.isSignedIn = val;
+    this.auth.userAuthState.subscribe((val) => {
+      this.isSignedIn = val;
     });
   }
 
@@ -31,5 +30,4 @@ export class AppComponent implements OnInit {
     this.token.removeToken();
     this.router.navigate(['login']);
   }
-
 }

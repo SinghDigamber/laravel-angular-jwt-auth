@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../shared/auth.service';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
-  errors = null;
+  errors: any = null;
 
   constructor(
     public router: Router,
@@ -22,25 +22,24 @@ export class SignupComponent implements OnInit {
       name: [''],
       email: [''],
       password: [''],
-      password_confirmation: ['']
-    })
+      password_confirmation: [''],
+    });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(
-      result => {
-        console.log(result)
+      (result) => {
+        console.log(result);
       },
-      error => {
+      (error) => {
         this.errors = error.error;
       },
       () => {
-        this.registerForm.reset()
+        this.registerForm.reset();
         this.router.navigate(['login']);
       }
-    )
+    );
   }
-
 }
